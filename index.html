@@ -1,110 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AA Washers - Pressure Washing</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AA Washers</title>
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+        margin: 0;
         font-family: Arial, sans-serif;
-        background: url('https://cdn.pixabay.com/photo/2016/11/29/06/17/cleaning-1866913_1280.jpg') no-repeat center center/cover;
-        color: #fff;
+        background: url('https://images.unsplash.com/photo-1603782925720-165cbe46f2b8?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+        background-size: cover;
+        color: white;
         text-align: center;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        backdrop-filter: brightness(0.6);
     }
     header {
-        font-size: 3rem;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        font-size: 2em;
         font-weight: bold;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 5px black;
     }
     .buttons {
+        margin-top: 50px;
         display: flex;
         justify-content: center;
         gap: 20px;
+        flex-wrap: wrap;
     }
     .btn {
-        background: rgba(255, 255, 255, 0.8);
-        color: #333;
-        padding: 15px 30px;
-        border-radius: 10px;
-        font-size: 1.2rem;
+        background: #00aaff;
+        padding: 15px 25px;
+        border-radius: 8px;
+        color: white;
+        font-size: 1.2em;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        font-weight: bold;
+        transition: 0.3s;
     }
     .btn:hover {
-        background: #f1c40f;
-        color: #000;
-        transform: scale(1.1);
+        background: #0088cc;
     }
-    /* Modal Styles */
-    .modal {
+    #modal {
         display: none;
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0,0,0,0.8);
         justify-content: center;
         align-items: center;
-    }
-    .modal-content {
-        background: #fff;
-        color: #000;
+        flex-direction: column;
         padding: 20px;
+    }
+    #modal img {
+        max-width: 90%;
+        max-height: 70vh;
         border-radius: 10px;
-        max-width: 800px;
-        text-align: center;
+        margin-bottom: 20px;
     }
-    .modal-content img {
-        width: 100%;
-        margin-top: 10px;
-        border-radius: 8px;
-    }
-    .close-btn {
-        margin-top: 15px;
-        padding: 10px 20px;
+    #modal .close {
         background: red;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
+        padding: 10px 20px;
+        border-radius: 5px;
         cursor: pointer;
     }
 </style>
 </head>
 <body>
-<header>AA Washers - Pressure Washing</header>
-<div class="buttons">
-    <div class="btn" onclick="openModal('Trash Bin Cleaning', '$15 per bin', 'https://www.ohiocleancans.com/wp-content/uploads/2021/12/clean-can-6.jpg')">Trash Bin Cleaning</div>
-    <div class="btn" onclick="openModal('Driveway Cleaning', '$80', 'https://cdn.pixabay.com/photo/2017/03/27/14/56/cleaning-2179306_1280.jpg')">Driveway Cleaning</div>
-    <div class="btn" onclick="openModal('House Siding Wash', '$120', 'https://cdn.pixabay.com/photo/2016/11/29/06/17/cleaning-1866913_1280.jpg')">House and Siding</div>
-</div>
 
-<!-- Modal -->
-<div class="modal" id="modal">
-    <div class="modal-content">
-        <h2 id="service-title"></h2>
-        <p id="service-price"></p>
-        <img id="before-img" src="" alt="Before/After">
-        <button class="close-btn" onclick="closeModal()">Close</button>
+<header>AA Washers - Professional Pressure Washing</header>
+
+<div class="buttons">
+    <div class="btn" onclick="openModal('Trash Bin Cleaning', '$15', 'https://www.ohiocleancans.com/wp-content/uploads/2021/12/clean-can-6.jpg')">
+        Trash Bin Cleaning
+    </div>
+    <div class="btn" onclick="openModal('Driveway Cleaning', '$99', 'https://homebusinessmag.com/wp-content/uploads/2020/01/image1.jpg')">
+        Driveway Cleaning
     </div>
 </div>
 
+<div id="modal">
+    <img id="modal-img" src="" alt="Before and After">
+    <h2 id="modal-title"></h2>
+    <p id="modal-price"></p>
+    <div class="close" onclick="closeModal()">Close</div>
+</div>
+
 <script>
-function openModal(service, price, image) {
-    document.getElementById('service-title').innerText = service;
-    document.getElementById('service-price').innerText = "Price: " + price;
-    document.getElementById('before-img').src = image;
-    document.getElementById('modal').style.display = 'flex';
+function openModal(service, price, imgSrc) {
+    document.getElementById("modal-title").textContent = service;
+    document.getElementById("modal-price").textContent = "Price: " + price;
+    document.getElementById("modal-img").src = imgSrc;
+    document.getElementById("modal").style.display = "flex";
 }
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+    document.getElementById("modal").style.display = "none";
 }
 </script>
+
 </body>
 </html>
