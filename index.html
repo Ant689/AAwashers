@@ -8,7 +8,7 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: url('<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGsFL98ptiRCSFTViEwEi3I8jDzzE5DKrY2w&amp;s" alt="AA Pressure Washing"/>') no-repeat center center fixed;
+        background: url('https://images.unsplash.com/photo-1603782925720-165cbe46f2b8?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
         background-size: cover;
         color: white;
         text-align: center;
@@ -49,7 +49,6 @@
         width: 100%; height: 100%;
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
         display: none;
         flex-direction: column;
         justify-content: center;
@@ -57,6 +56,7 @@
         color: white;
         text-shadow: 2px 2px 8px black;
         z-index: 1000;
+        padding: 20px;
     }
     .overlay h1 {
         font-size: 3em;
@@ -75,6 +75,44 @@
         cursor: pointer;
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
+    /* Booking page */
+    #booking-page {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1100;
+        color: white;
+        padding: 20px;
+    }
+    #booking-page h2 {
+        font-size: 2.5em;
+    }
+    #booking-page form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 300px;
+    }
+    #booking-page input, #booking-page select {
+        padding: 10px;
+        font-size: 1em;
+    }
+    #booking-page button {
+        padding: 12px;
+        background: #00cc66;
+        color: white;
+        font-size: 1.2em;
+        border: none;
+        cursor: pointer;
+    }
+    #booking-page button:hover {
+        background: #00994d;
+    }
 </style>
 </head>
 <body>
@@ -88,15 +126,34 @@
     <div class="btn" onclick="showOverlay('Driveway Cleaning', '$80', 'https://homebusinessmag.com/wp-content/uploads/2020/01/image1.jpg')">
         Driveway Cleaning
     </div>
-    <div class="btn" onclick="showOverlay('House & Siding Cleaning', '$120', 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1920&q=80')">
+    <div class="btn" onclick="showOverlay('House & Siding Cleaning', '$120', 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1920&q=80')">
         House & Siding Cleaning
     </div>
+    <div class="btn" onclick="openBookingPage()">Book Now</div>
 </div>
 
 <div id="overlay" class="overlay">
     <h1 id="overlay-title"></h1>
     <p id="overlay-price"></p>
     <div class="close-btn" onclick="closeOverlay()">Close</div>
+</div>
+
+<div id="booking-page">
+    <h2>Book Your Service</h2>
+    <form>
+        <input type="text" placeholder="Anthony Ridgeway" required />
+        <input type="tel" placeholder="703-380-6441" required />
+        <input type="email" placeholder="antridge3@gmail.com" required />
+        <select required>
+            <option value="">Select Service</option>
+            <option>Trash Bin Cleaning - $15</option>
+            <option>Driveway Cleaning - $80</option>
+            <option>House & Siding Cleaning - $120</option>
+        </select>
+        <input type="date" required />
+        <button type="submit">Submit</button>
+    </form>
+    <div class="close-btn" onclick="closeBookingPage()">Close</div>
 </div>
 
 <script>
@@ -107,9 +164,14 @@ function showOverlay(service, price, img) {
     document.getElementById("overlay-price").textContent = "Price: " + price;
     overlay.style.display = "flex";
 }
-
 function closeOverlay() {
     document.getElementById("overlay").style.display = "none";
+}
+function openBookingPage() {
+    document.getElementById("booking-page").style.display = "flex";
+}
+function closeBookingPage() {
+    document.getElementById("booking-page").style.display = "none";
 }
 </script>
 
